@@ -22,3 +22,34 @@ function fromCharCode(){
 
     document.write(String.fromCharCode(text));
 }
+
+    // --------------
+
+text = prompt("Enter you name");
+    for(let i=0; Infinity; i++){
+        if (text == "muhammad"){
+            break
+        }
+        else{
+            text = prompt("Enter you name");
+        }
+    }
+
+    // --------------
+
+    num = prompt("Enter the number");
+    quantity = prompt("Enter the length");
+
+    for(let i=1; i<=quantity; i++){
+        document.write(i*num + "<br>");
+    }
+
+    // --------------
+
+    length = prompt("How much names you want?");
+    names = [];
+    for(i=1; i<=length; i++){
+        new_name = prompt("Enter the Name");
+        names.push(new_name);
+    }
+    document.write(`Names=[${names}]`);
