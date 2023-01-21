@@ -23,19 +23,19 @@
 // user_num2= parseInt(prompt("Enter the second number"));
 
 function add(num1, num2){
-    alert(num1+num2);
+    document.getElementById("answer").innerHTML = num1+num2;
 }
 function sub(num1, num2){
-    alert(num1-num2);
+    document.getElementById("answer").innerHTML = num1-num2;
 }
 function divide(num1, num2){
-    alert(num1/num2);
+    document.getElementById("answer").innerHTML = num1/num2;
 }
 function product(num1, num2){
-    alert(num1*num2);
+    document.getElementById("answer").innerHTML = num1*num2;
 }
 function mode(num1, num2){
-    alert(num1%num2);
+    document.getElementById("answer").innerHTML = num1%num2;
 }
 
 
