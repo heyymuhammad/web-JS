@@ -158,6 +158,17 @@
             position: relative;
             right: 200px;
         }
+
+        button#open {
+            display: none;
+            position: relative;
+            left: 355px;
+
+        }
+
+        .passcode {
+            display: none;
+        }
     </style>
     <script src="https://kit.fontawesome.com/ec46d9c2b2.js" crossorigin="anonymous"></script>
     <title>Coffee Machine</title>
@@ -194,11 +205,11 @@
                     <div id="text">
                         Sorry there are not sufficient resources.
                     </div>
-                    <!-- <div id="code">
+                    <div class="passcode" id="code">
                         <input type="text" placeholder="Enter Code to Open" id="pass">
-                    </div> -->
+                    </div>
                     <br>
-                    <!-- <button class="btn btn-dark" onclick="open()" style="font-size: 25px;" id="open">Open</button> -->
+                    <button class="btn btn-dark" onclick="on()" style="font-size: 25px;" id="open">Open</button>
                     <button class="btn btn-dark" onclick="cross()" style="font-size: 25px;" id="okay">Okay</button>
                 </div>
             </div>
@@ -240,8 +251,15 @@
             "coffee": 100,
         }
         drink = {
-            'ingredients' : 0
-        } 
+            'ingredients': 0
+        }
+        pass = 2350
+
+
+
+        // Checking If the resources are sufficient
+
+
         function is_resource_sufficient(type) {
             order = MENU[type]
             for (item in order['ingredients']) {
@@ -251,6 +269,9 @@
                 return false
             }
         }
+
+        // Three kinds of coffee we provide 
+
         function espresso() {
             document.getElementById("cup").style.display = "none";
             document.getElementById("coffee").style.display = "none";
@@ -292,10 +313,14 @@
                 document.getElementById("text").innerHTML = "Sorry there are not sufficient resources."
             }
         }
-        function process_coins() {
-            drink = MENU[choice]    
 
-            
+
+        // processing money
+
+        function process_coins() {
+            drink = MENU[choice]
+
+
             if (is_resource_sufficient(choice)) {
 
                 total = parseInt(document.getElementById("quarters").value) * 0.25;
@@ -329,6 +354,9 @@
                 document.getElementById("text").innerHTML = "Sorry there are not sufficient resources."
             }
         }
+
+        // info about the resources
+
         function report() {
 
 
@@ -338,25 +366,48 @@
             document.getElementById("not_suff").style.display = "block";
             document.getElementById("text").innerHTML = machine_report
             document.getElementById("not_suff").style.height = "32rem";
-            
+
         }
+
+        // power button 
+
         function off() {
             document.getElementById("cup").style.display = "none";
-
-            // document.getElementById("okay").style.display = "none";
+            document.getElementById("okay").style.display = "none";
             document.getElementById("not_suff").style.display = "block";
-            // document.getElementById("not_suff").style.paddingTop = "4rem";
+            document.getElementById("not_suff").style.paddingTop = "4rem";
             document.getElementById("not_suff").style.height = "20rem";
             document.getElementById("text").innerHTML = "CLOSED"
-            
+            document.getElementById("open").style.display = "block";
+            document.getElementById("code").style.display = "block";
+
+
 
         }
+
+        // cross function for popup
+
         function cross() {
             document.getElementById("not_suff").style.display = "none";
 
         }
 
-        
+        // enter passcode to turn on the machine 
+
+        function on() {
+            user_input = document.getElementById("pass").value;
+            if (user_input==pass){
+                document.getElementById("not_suff").style.display = "none";
+            }
+            else{
+                alert("Sorry! You entered the wrong passcode :( ")
+            }
+        }
+
+        function drag(){
+            document.getElementById("cup").style.display = "none"
+        }
+
     </script>
 
 </body>
